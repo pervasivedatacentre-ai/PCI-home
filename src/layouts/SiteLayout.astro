@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, Astro.site);
+const pageTitle = title === 'Pervasive Capital' ? title : `${title} | Pervasive Capital`;
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/vision', label: 'Vision' },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/contact', label: 'Contact' },
+];
+const isCurrent = (href: string) => href === '/' ? pathname === href : pathname.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#071d2b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/" aria-label="Pervasive Capital home">
+          <span class="brand-placeholder" aria-hidden="true">PC</span>
+          <span>Pervasive Capital</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <details class="mobile-menu">
+          <summary aria-label="Open navigation">Menu</summary>
+          <nav aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <a class="brand footer-brand" href="/">
+            <span class="brand-placeholder" aria-hidden="true">PC</span>
+            <span>Pervasive Capital</span>
+          </a>
+          <p>Pervasive Capital Investments Pte. Ltd.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/solutions">Solutions</a>
+          <a href="/contact">Contact</a>
+          <a href="/legal">Terms &amp; Privacy</a>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:contact@pervasive-capital.com">contact@pervasive-capital.com</a>
+          <p>© {new Date().getFullYear()} Pervasive Capital.</p>
+          <p class="credit">
+            Hero photograph by <a href="https://unsplash.com/photos/3Nwt6w-KU3E">Kier in Sight Archives</a>
+            on <a href="https://unsplash.com">Unsplash</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Contact"
+  description="Contact Pervasive Capital Investments Pte. Ltd. about partnerships, infrastructure, and market opportunities."
+>
+  <section class="contact-section">
+    <div class="shell contact-grid">
+      <div class="contact-intro">
+        <p class="eyebrow">Contact us</p>
+        <h1>Start a conversation.</h1>
+        <p>
+          Tell us a little about your organisation, opportunity, or enquiry. Submitting this
+          form opens your email application with a prepared message.
+        </p>
+        <div class="direct-contact">
+          <span>Direct email</span>
+          <a href="mailto:contact@pervasive-capital.com">contact@pervasive-capital.com</a>
+        </div>
+      </div>
+
+      <form
+        id="contact-form"
+        action="mailto:contact@pervasive-capital.com"
+        method="post"
+        enctype="text/plain"
+      >
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="organisation">Organisation <span>(optional)</span></label>
+          <input id="organisation" name="organisation" type="text" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="7" required></textarea>
+        </div>
+        <button class="button" type="submit">Prepare email</button>
+        <p class="form-note">
+          This website does not store your form entries. Your device will pass them to your
+          chosen email application.
+        </p>
+      </form>
+    </div>
+  </section>
+</SiteLayout>
+
+<script is:inline>
+  const form = document.querySelector('#contact-form');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement) || !form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const name = String(data.get('name') || '');
+    const email = String(data.get('email') || '');
+    const organisation = String(data.get('organisation') || '');
+    const message = String(data.get('message') || '');
+    const subject = `Website enquiry from ${name}`;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      organisation ? `Organisation: ${organisation}` : '',
+      '',
+      message,
+    ].filter((line, index) => line || index > 2).join('\n');
+
+    window.location.href = `mailto:contact@pervasive-capital.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+
+<style>
+  .contact-section {
+    min-height: calc(100svh - var(--header-height));
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background:
+      linear-gradient(120deg, var(--cream) 0 45%, var(--paper) 45% 100%);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(3rem, 9vw, 9rem);
+    align-items: start;
+  }
+
+  .contact-intro {
+    position: sticky;
+    top: calc(var(--header-height) + 3rem);
+  }
+
+  .contact-intro h1 {
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+  }
+
+  .contact-intro > p:not(.eyebrow) {
+    max-width: 34rem;
+    color: var(--muted);
+    font-size: 1.08rem;
+  }
+
+  .direct-contact {
+    display: grid;
+    gap: 0.3rem;
+    margin-top: 3rem;
+  }
+
+  .direct-contact span {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .direct-contact a {
+    color: var(--teal);
+    font-weight: 750;
+    text-underline-offset: 0.3rem;
+  }
+
+  form {
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid var(--line);
+    background: var(--white);
+    box-shadow: 0 2rem 4rem rgb(7 29 43 / 7%);
+  }
+
+  .field {
+    margin-bottom: 1.4rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 750;
+  }
+
+  label span {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #aebdbe;
+    border-radius: 0;
+    padding: 0.8rem 0.9rem;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--teal);
+    outline: 3px solid rgb(32 163 158 / 20%);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  form .button {
+    cursor: pointer;
+  }
+
+  .form-note {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 760px) {
+    .contact-section {
+      background: var(--cream);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-intro {
+      position: static;
+    }
+  }
+</style>

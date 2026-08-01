@@ -1,0 +1,154 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const values = [
+  {
+    title: 'Stewardship',
+    text: 'We take a long-term view of capital, relationships, and the systems we help build. Our work is guided by responsible ownership and the expectation that durable value must serve both partners and the markets around them.',
+  },
+  {
+    title: 'Resilience',
+    text: 'We design for changing conditions. By considering infrastructure, supply, energy, operations, and market access together, we seek to create systems that remain useful and adaptable under pressure.',
+  },
+  {
+    title: 'Partnership',
+    text: 'Complex industries are built through cooperation. We work with local and specialist partners to combine context, capability, and aligned incentives from planning through execution.',
+  },
+];
+---
+
+<SiteLayout
+  title="Vision"
+  description="Pervasive Capital's vision and core values: stewardship, resilience, and partnership."
+>
+  <section class="page-hero vision-hero">
+    <div class="shell content">
+      <p class="eyebrow">Our vision</p>
+      <h1>Create real value in an increasingly connected world.</h1>
+      <p class="lede">
+        We aim to understand the undercurrents of energy and technology, then turn that
+        understanding into useful, resilient systems for industries and communities.
+      </p>
+    </div>
+  </section>
+
+  <section class="values-section" aria-labelledby="values-heading">
+    <div class="shell values-grid">
+      <div class="values-intro">
+        <p class="eyebrow">Core values</p>
+        <h2 id="values-heading">How we approach the work.</h2>
+        <p>Select a value to read more.</p>
+      </div>
+      <div class="values-list">
+        {values.map((value, index) => (
+          <details open={index === 0}>
+            <summary>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{value.title}</strong>
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+            <p>{value.text}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .vision-hero {
+    background:
+      radial-gradient(circle at 80% 10%, rgb(32 163 158 / 18%), transparent 30%),
+      var(--cream);
+  }
+
+  .values-section {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .values-intro {
+    position: sticky;
+    top: calc(var(--header-height) + 3rem);
+    align-self: start;
+  }
+
+  .values-intro h2 {
+    max-width: 30rem;
+    color: var(--navy);
+  }
+
+  .values-intro > p:last-child {
+    color: var(--muted);
+  }
+
+  .values-list {
+    border-top: 1px solid var(--line);
+  }
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary > span:first-child {
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  summary strong {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    font-weight: 500;
+  }
+
+  .plus {
+    font-size: 1.8rem;
+    font-weight: 300;
+    transition: transform 180ms ease;
+  }
+
+  details[open] .plus {
+    transform: rotate(45deg);
+  }
+
+  details p {
+    max-width: 42rem;
+    margin: -0.4rem 0 2.25rem 4rem;
+    color: var(--muted);
+    font-size: 1.06rem;
+  }
+
+  @media (max-width: 760px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .values-intro {
+      position: static;
+    }
+
+    details p {
+      margin-left: 0;
+    }
+  }
+</style>

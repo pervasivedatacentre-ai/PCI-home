@@ -1,0 +1,301 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import connectivityDiagram from '../assets/connectivity-ecosystem.png';
+import tokenisationDiagram from '../assets/tokenisation-platform.png';
+import agricultureDiagram from '../assets/smart-agriculture.png';
+import commoditiesDiagram from '../assets/commodities-arbitrage.png';
+
+const tabs = [
+  { href: '#connectivity', label: 'Connectivity' },
+  { href: '#tokenisation', label: 'Tokenisation' },
+  { href: '#agriculture', label: 'Smart Agriculture' },
+  { href: '#commodities', label: 'Commodities' },
+];
+---
+
+<SiteLayout
+  title="Solutions"
+  description="Explore Pervasive Capital's work across connectivity infrastructure, tokenisation, smart agriculture, and commodities."
+>
+  <section class="solutions-hero">
+    <div class="shell">
+      <p class="eyebrow">Our solutions</p>
+      <h1>Connected systems.<br />Practical outcomes.</h1>
+      <p>
+        Four areas of focus, each approached as an end-to-end system rather than a collection
+        of disconnected services.
+      </p>
+    </div>
+  </section>
+
+  <nav class="solution-tabs" aria-label="Jump to a solution">
+    <div class="shell tabs-inner">
+      {tabs.map((tab, index) => (
+        <a href={tab.href}><span>{String(index + 1).padStart(2, '0')}</span>{tab.label}</a>
+      ))}
+    </div>
+  </nav>
+
+  <div class="solutions-list">
+    <section class="solution-section" id="connectivity" aria-labelledby="connectivity-title">
+      <div class="shell solution-inner">
+        <div class="solution-copy">
+          <p class="eyebrow">Solution 01</p>
+          <h2 id="connectivity-title">Connectivity Ecosystem &amp; Services</h2>
+          <p>
+            Pervasive Capital develops infrastructure designed to move and power the internet.
+            The model brings submarine fibre connectivity together with colocation, efficient
+            cooling, renewable power, grid connections, and supporting energy systems.
+          </p>
+          <p>
+            Treating these capabilities as one connected offering gives telecommunications
+            providers, cloud operators, hyperscalers, and internet businesses a clearer path
+            from cable landing to compute capacity.
+          </p>
+        </div>
+        <figure class="diagram">
+          <Image
+            src={connectivityDiagram}
+            alt="Connectivity ecosystem showing an urban network connected by submarine fibre to efficient cooling, data centre, battery, and grid infrastructure."
+            loading="eager"
+          />
+          <figcaption>Connectivity from end users to cable, compute, cooling, and power.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="solution-section alternate" id="tokenisation" aria-labelledby="tokenisation-title">
+      <div class="shell solution-inner">
+        <div class="solution-copy">
+          <p class="eyebrow">Solution 02</p>
+          <h2 id="tokenisation-title">Tokenisation</h2>
+          <p>
+            Pervasive Capital is developing an approach that connects traditional financial
+            instruments and real-world assets with blockchain-based market infrastructure.
+            The proposed system spans asset verification, tokenisation engines, settlement,
+            custody, and access for eligible market participants.
+          </p>
+          <p>
+            By joining these functions, tokenised instruments can support more direct issuance,
+            programmable execution, and broader trading availability while retaining the
+            accounting, compliance, and surveillance expected of financial markets.
+          </p>
+        </div>
+        <figure class="diagram">
+          <Image
+            src={tokenisationDiagram}
+            alt="Tokenisation process from off-chain assets through accounting, blockchain instruments, market infrastructure, and end customers."
+            loading="lazy"
+          />
+          <figcaption>From verified off-chain assets to on-chain instruments and market access.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="solution-section" id="agriculture" aria-labelledby="agriculture-title">
+      <div class="shell solution-inner">
+        <div class="solution-copy">
+          <p class="eyebrow">Solution 03</p>
+          <h2 id="agriculture-title">Smart Agriculture</h2>
+          <p>
+            Our smart agriculture concept connects farming cooperatives, collection centres,
+            processing facilities, and wholesale distribution. Sensors, crop monitoring,
+            irrigation automation, and quality controls can provide better information from
+            the field through to processing.
+          </p>
+          <p>
+            Integrated logistics, storage, traceability, and cold-chain management can then help
+            coordinate supply across processors, retailers, hospitality businesses, and export
+            markets. The objective is a more visible and responsive agricultural value chain.
+          </p>
+        </div>
+        <figure class="diagram">
+          <Image
+            src={agricultureDiagram}
+            alt="Smart agriculture value chain from sensor-enabled farms through collection, processing, livestock integration, storage, and distribution."
+            loading="lazy"
+          />
+          <figcaption>A connected path from cooperative farms to processors and markets.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="solution-section alternate" id="commodities" aria-labelledby="commodities-title">
+      <div class="shell solution-inner">
+        <div class="solution-copy">
+          <p class="eyebrow">Solution 04</p>
+          <h2 id="commodities-title">Commodities Arbitrage</h2>
+          <p>
+            Pervasive Capital trades and manages commodities including grain, fertiliser,
+            sulfur, and selected ores and slags for recycling. The operating model covers
+            partner sourcing, wholesale arbitrage, strategic storage, selective processing,
+            and distribution.
+          </p>
+          <p>
+            Working across multiple stages of the value chain creates several paths to value
+            and supports flexible responses to demand. It can also support reserve strategies,
+            supply resilience, and access to essential materials for public- and private-sector
+            partners.
+          </p>
+        </div>
+        <figure class="diagram">
+          <Image
+            src={commoditiesDiagram}
+            alt="Integrated commodities system covering supply acquisition, strategic storage, value-added processing, and wholesale and retail market access."
+            loading="lazy"
+          />
+          <figcaption>Coordinating sourcing, storage, processing, and market access.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </div>
+</SiteLayout>
+
+<style>
+  .solutions-hero {
+    padding: clamp(5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .solutions-hero .eyebrow {
+    color: #79cfca;
+  }
+
+  .solutions-hero h1 {
+    margin-bottom: 1.75rem;
+  }
+
+  .solutions-hero > div > p:last-child {
+    max-width: 48rem;
+    margin-bottom: 0;
+    color: #b8c7ca;
+    font-size: 1.18rem;
+  }
+
+  .solution-tabs {
+    position: sticky;
+    z-index: 80;
+    top: var(--header-height);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper), transparent 4%);
+    backdrop-filter: blur(14px);
+  }
+
+  .tabs-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .solution-tabs a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    border-left: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.83rem;
+    font-weight: 750;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .solution-tabs a:last-child {
+    border-right: 1px solid var(--line);
+  }
+
+  .solution-tabs a:hover {
+    background: var(--cream);
+    color: var(--teal);
+  }
+
+  .solution-tabs span {
+    color: var(--teal);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .solution-section {
+    min-height: calc(100svh - var(--header-height) - 3.6rem);
+    display: flex;
+    align-items: center;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    scroll-margin-top: calc(var(--header-height) + 3.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .solution-section.alternate {
+    background: var(--cream);
+  }
+
+  .solution-inner {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.55fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
+  }
+
+  .solution-section.alternate .solution-copy {
+    order: 2;
+  }
+
+  .solution-section.alternate .diagram {
+    order: 1;
+  }
+
+  .solution-copy h2 {
+    margin-bottom: 1.75rem;
+    color: var(--navy);
+    font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+  }
+
+  .solution-copy > p:not(.eyebrow) {
+    color: var(--muted);
+  }
+
+  .diagram {
+    margin: 0;
+  }
+
+  .diagram :global(img) {
+    width: 100%;
+    display: block;
+    filter: drop-shadow(0 1.25rem 1.5rem rgb(7 29 43 / 8%));
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-align: right;
+  }
+
+  @media (max-width: 900px) {
+    .tabs-inner {
+      width: max-content;
+      min-width: 100%;
+    }
+
+    .solution-tabs {
+      overflow-x: auto;
+    }
+
+    .solution-tabs a {
+      min-width: max-content;
+    }
+
+    .solution-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .solution-section {
+      min-height: auto;
+    }
+
+    .solution-section.alternate .solution-copy,
+    .solution-section.alternate .diagram {
+      order: initial;
+    }
+  }
+</style>
