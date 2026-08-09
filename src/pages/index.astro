@@ -2,6 +2,14 @@
 import { Image } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import heroImage from '../assets/hero-server-cabling.jpg';
+import oasisRoute from '../assets/oasis-red-sea-route.png';
+import omanSiteAerial from '../assets/oman-site-aerial.jpg';
+import omanGrainSilos from '../assets/oman-grain-silos.jpg';
+import omanGreenhouseRows from '../assets/oman-greenhouse-rows.jpg';
+import omanGreenhouseCrops from '../assets/oman-greenhouse-crops.jpg';
+import cambodiaCableLanding from '../assets/cambodia-cable-landing.jpg';
+import cambodiaSmartFarming from '../assets/cambodia-smart-farming.jpg';
+import cambodiaDataCentre from '../assets/cambodia-data-centre.jpg';
 
 const solutions = [
   {
@@ -27,6 +35,62 @@ const solutions = [
     title: 'Commodities Arbitrage and Storage Solutions',
     text: 'A coordinated approach to sourcing, storage, selective processing, distribution, and market access.',
     href: '/solutions#commodities',
+  },
+];
+
+const projects = [
+  {
+    id: 'oasis-red-sea',
+    number: '01',
+    title: 'OASIS Red Sea Cable System',
+    text:
+      'The OASIS Red Sea Cable system is a 3,500km cable system with state-of-the-art repeatered technology, which aims to provide high-performance, low-latency DC-to-DC connectivity spanning the route of the Suez Canal. The project is managed by our subsidiary, Pervasive Data Communications Pte Ltd.',
+    specs: [
+      { label: 'Status', value: 'Funding Stage' },
+      { label: 'Design Capacity', value: '32 x 20 Tbps' },
+      { label: 'Landing Sites', value: 'Sharm El-Sheikh, Djibouti City, Salalah' },
+    ],
+    media: [
+      {
+        src: oasisRoute,
+        alt: 'Route map of the OASIS Red Sea cable system from Sharm El-Sheikh through Djibouti City to Salalah.',
+      },
+    ],
+  },
+  {
+    id: 'oman-alfalfa',
+    number: '02',
+    title: 'Oman Alfalfa Smart Farming and Agricultural Cooperative',
+    text:
+      'A smart agricultural and farming solution located in Al-Buraimi, Oman, using AI and drone-based technologies to reach a forecast production of up to approximately 138,000 tonnes of premium alfalfa hay and derivatives for livestock consumption and local partners within Oman and the greater GCC region.',
+    specs: [
+      { label: 'Status', value: 'Awaiting Deployment' },
+      { label: 'Production Capacity (Phase 3)', value: '138,000 tonnes (approx.)' },
+      { label: 'Farm Size and Location (Phase 1)', value: '1,600 ha, Al-Buraimi' },
+    ],
+    media: [
+      { src: omanSiteAerial, alt: 'Satellite view of the Al-Buraimi site with the Phase 1 farm plot outlined.' },
+      { src: omanGrainSilos, alt: 'Grain storage silos beside a cultivated field at sunset.' },
+      { src: omanGreenhouseRows, alt: 'Rows of alfalfa growing under a covered greenhouse structure.' },
+      { src: omanGreenhouseCrops, alt: 'Close view of young crops growing in raised beds inside a greenhouse.' },
+    ],
+  },
+  {
+    id: 'cambodia-connectivity',
+    number: '03',
+    title: 'Cambodia Connectivity and Smart Agriculture Solution',
+    text:
+      'Pervasive Capital plans a submarine optic fibre cable, data centre, and AI-based smart agricultural package to boost connectivity and digital productivity in the Kingdom of Cambodia. The plan covers fibre connectivity, cloud capacity and storage, and a proprietary digital farming platform developed with local farming collectives.',
+    specs: [
+      { label: 'Status', value: 'In Negotiations' },
+      { label: 'Mission', value: 'Tier 4 Data Centre, Colo-aaS, Smart Contract Farming' },
+      { label: 'Potential Cable Landing Sites', value: 'Phnom Penh, Cambodia' },
+    ],
+    media: [
+      { src: cambodiaCableLanding, alt: 'Coastal cable landing station viewed from the water.' },
+      { src: cambodiaSmartFarming, alt: 'A hand holding a phone running a smart farming app above planted field rows.' },
+      { src: cambodiaDataCentre, alt: 'Aerial view of a large data centre campus.' },
+    ],
   },
 ];
 ---
@@ -99,6 +163,43 @@ const solutions = [
             <p>{solution.text}</p>
             <span class="card-arrow" aria-hidden="true">↗</span>
           </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" aria-labelledby="projects-heading">
+    <div class="shell">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Selected projects</p>
+          <h2 id="projects-heading">Work in development.</h2>
+        </div>
+      </div>
+
+      <div class="project-list">
+        {projects.map((project, index) => (
+          <article id={project.id} class:list={['project', index % 2 === 1 && 'reverse']}>
+            <div class="project-media" data-count={project.media.length}>
+              {project.media.map((item) => (
+                <Image src={item.src} alt={item.alt} loading="lazy" format="webp" quality={80} />
+              ))}
+            </div>
+
+            <div class="project-copy">
+              <p class="eyebrow">Project {project.number}</p>
+              <h3>{project.title}</h3>
+              <p class="project-text">{project.text}</p>
+              <dl class="spec-table">
+                {project.specs.map((spec) => (
+                  <div class="spec-row">
+                    <dt>{spec.label}</dt>
+                    <dd>{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </article>
         ))}
       </div>
     </div>
@@ -288,6 +389,104 @@ const solutions = [
     font-size: 1.5rem;
   }
 
+  .projects {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--cream);
+  }
+
+  .project-list {
+    display: grid;
+    gap: clamp(4rem, 8vw, 7rem);
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .project.reverse .project-media {
+    order: 2;
+  }
+
+  .project-media {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .project-media img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--white);
+  }
+
+  .project-media[data-count='1'] img {
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .project-media[data-count='3'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-media[data-count='3'] img:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-media[data-count='4'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-copy h3 {
+    margin: 0 0 1.25rem;
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .project-text {
+    margin-bottom: 2rem;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  .spec-table {
+    margin: 0;
+  }
+
+  .spec-row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.85fr) 1fr;
+    gap: 1.5rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .spec-row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .spec-row dt {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .spec-row dd {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 600;
+    text-align: right;
+  }
+
   .cta {
     background: var(--teal);
     color: var(--white);
@@ -333,6 +532,23 @@ const solutions = [
 
     .solution-card {
       min-height: 19rem;
+    }
+
+    .project {
+      grid-template-columns: 1fr;
+    }
+
+    .project.reverse .project-media {
+      order: 0;
+    }
+
+    .spec-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .spec-row dd {
+      text-align: left;
     }
   }
 </style>
