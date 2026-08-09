@@ -127,17 +127,11 @@ h3 {
   text-decoration: none;
 }
 
-.brand-placeholder {
-  width: 2.35rem;
-  height: 2.35rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--teal);
-  color: var(--teal);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+.brand-logo {
+  width: 2.65rem;
+  height: 2.65rem;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .desktop-nav {

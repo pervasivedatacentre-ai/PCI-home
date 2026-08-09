@@ -53,6 +53,10 @@ const tabs = [
             providers, cloud operators, hyperscalers, and internet businesses a clearer path
             from cable landing to compute capacity.
           </p>
+          <p>
+            Use of AI can support network planning, operations, and infrastructure optimisation across this ecosystem.
+            This scope is covered by our subsidiary, <a class="inline-link" href="https://pdc.pervasive-capital.com">Pervasive Data Communications</a>.
+          </p>
         </div>
         <figure class="diagram">
           <Image
@@ -65,8 +69,8 @@ const tabs = [
       </div>
     </section>
 
-    <section class="solution-section alternate" id="tokenisation" aria-labelledby="tokenisation-title">
-      <div class="shell solution-inner">
+    <section class="solution-section alternate tokenisation-section" id="tokenisation" aria-labelledby="tokenisation-title">
+      <div class="shell solution-inner tokenisation-inner">
         <div class="solution-copy">
           <p class="eyebrow">Solution 02</p>
           <h2 id="tokenisation-title">Tokenisation</h2>
@@ -81,6 +85,14 @@ const tabs = [
             programmable execution, and broader trading availability while retaining the
             accounting, compliance, and surveillance expected of financial markets.
           </p>
+          <div class="applications">
+            <h3>Applications</h3>
+            <p>
+              Applications include stablecoins and the onchaining of real-world assets and
+              financial instruments, enabling compliant digital representations of value to
+              move through programmable market infrastructure.
+            </p>
+          </div>
         </div>
         <figure class="diagram">
           <Image
@@ -125,7 +137,7 @@ const tabs = [
       <div class="shell solution-inner">
         <div class="solution-copy">
           <p class="eyebrow">Solution 04</p>
-          <h2 id="commodities-title">Commodities Arbitrage</h2>
+          <h2 id="commodities-title">Commodities Arbitrage and Storage Solutions</h2>
           <p>
             Pervasive Capital trades and manages commodities including grain, fertiliser,
             sulfur, and selected ores and slags for recycling. The operating model covers
@@ -231,9 +243,9 @@ const tabs = [
 
   .solution-inner {
     display: grid;
-    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.55fr);
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: clamp(2.5rem, 6vw, 6rem);
+    gap: clamp(2.5rem,  6vw, 6rem);
   }
 
   .solution-section.alternate .solution-copy {
@@ -251,6 +263,44 @@ const tabs = [
   }
 
   .solution-copy > p:not(.eyebrow) {
+    color: var(--muted);
+  }
+
+  .solution-copy .inline-link {
+    color: var(--teal);
+  }
+
+  .tokenisation-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .tokenisation-section .solution-copy,
+  .tokenisation-section .diagram {
+    order: initial;
+  }
+
+  .tokenisation-section .solution-copy {
+    max-width: 58rem;
+  }
+
+  .applications {
+    max-width: 52rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .applications h3 {
+    margin-bottom: 0.65rem;
+    color: var(--navy);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .applications p {
+    margin-bottom: 0;
     color: var(--muted);
   }
 

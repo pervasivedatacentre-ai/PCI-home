@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
+import pervasiveLogo from '../assets/pervasive-logo.png';
 
 interface Props {
   title: string;
@@ -41,7 +43,7 @@ const isCurrent = (href: string) => href === '/' ? pathname === href : pathname.
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="/" aria-label="Pervasive Capital home">
-          <span class="brand-placeholder" aria-hidden="true">PC</span>
+          <Image class="brand-logo" src={pervasiveLogo} alt="" width={48} height={48} />
           <span>Pervasive Capital</span>
         </a>
 
@@ -74,7 +76,7 @@ const isCurrent = (href: string) => href === '/' ? pathname === href : pathname.
       <div class="shell footer-grid">
         <div>
           <a class="brand footer-brand" href="/">
-            <span class="brand-placeholder" aria-hidden="true">PC</span>
+            <Image class="brand-logo" src={pervasiveLogo} alt="" width={48} height={48} />
             <span>Pervasive Capital</span>
           </a>
           <p>Pervasive Capital Investments Pte. Ltd.</p>
