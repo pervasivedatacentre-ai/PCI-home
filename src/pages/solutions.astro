@@ -181,26 +181,36 @@ const tabs = [
               cycles, and deliver against forward commitments.
             </p>
             <p>
-              For business-to-business counterparties, the platform is intended to supply
-              stockpiling programmes, from sovereign food-security reserves to industrial
-              feedstock buffers, backed by contracted tonnage and pre-positioned warehouse
-              space.
+              The intended counterparties are industrial: chemical producers drawing on
+              sulphur derivatives, construction and electrical component manufacturers
+              buying recovered copper and processed slag, and institutions holding
+              sovereign food-security reserves or feedstock buffers. Recovered material
+              is cheaper than primary supply and carries a far lower energy burden, so
+              recycling serves both cost and sustainability targets. Contracted tonnage
+              and pre-positioned warehouse space are intended to back these commitments.
             </p>
-            <h4 class="addendum-subhead">Planned core operations</h4>
+            <h4 class="addendum-subhead">Core operations</h4>
             <ul class="addendum-ops">
               <li>
-                <strong>Metals and slags trading.</strong> Sourcing and wholesale of base
-                metals and smelter by-products, held or moved as market conditions allow.
+                <strong>Metals and slags trading</strong>
+                <p>
+                  Sourcing and wholesale of base metals and smelter by-products, held or
+                  moved as market conditions allow.
+                </p>
               </li>
               <li>
-                <strong>Recycling of precious metals, <a href="/docs/sailong-recycling-partnership.pdf" target="_blank" rel="noopener">with Our Partners</a>.</strong>
-                Recovery of precious metals from scrap and residues through partner
-                refining and processing capacity.
+                <strong>Recycling of precious metals, <a href="/docs/sailong-recycling-partnership.pdf" target="_blank" rel="noopener">with Our Partners</a></strong>
+                <p>
+                  Recovery of precious metals from scrap and residues through partner
+                  refining and processing capacity.
+                </p>
               </li>
               <li>
-                <strong>Sulphur and fertiliser processing and trading.</strong> Blending,
-                grading, and repackaging of sulphur and fertiliser inputs to specification
-                for onward sale or agricultural use.
+                <strong>Sulphur and fertiliser processing and trading</strong>
+                <p>
+                  Blending, grading, and repackaging of sulphur and fertiliser inputs to
+                  specification for onward sale or agricultural use.
+                </p>
               </li>
             </ul>
           </div>
@@ -430,13 +440,19 @@ const tabs = [
   }
 
   .addendum-ops strong {
+    display: block;
     color: var(--ink);
     font-weight: 700;
   }
 
+  .addendum-ops p {
+    margin: 0.3rem 0 0;
+    padding-left: 1rem;
+  }
+
   .addendum-figure figcaption {
     padding-top: 0.25rem;
-    text-align: left;
+    text-align: center;
   }
 
   @media (max-width: 900px) {
