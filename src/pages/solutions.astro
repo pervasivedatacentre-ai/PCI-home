@@ -5,6 +5,7 @@ import connectivityDiagram from '../assets/connectivity-ecosystem.png';
 import tokenisationDiagram from '../assets/tokenisation-platform.png';
 import agricultureDiagram from '../assets/smart-agriculture.png';
 import commoditiesDiagram from '../assets/commodities-arbitrage.png';
+import commodities2Diagram from '../assets/commodities-operations.png';
 
 const tabs = [
   { href: '#connectivity', label: 'Connectivity' },
@@ -160,6 +161,44 @@ const tabs = [
           <figcaption>Coordinating sourcing, storage, processing, and market access.</figcaption>
         </figure>
       </div>
+
+      <div class="shell commodities-addendum">
+        <div class="addendum-inner">
+          <figure class="addendum-figure">
+            <Image
+              src={commodities2Diagram}
+              alt="Contracted shipping, storage, and processing operations supporting B2B commodities supply chains."
+              loading="lazy"
+            />
+          </figure>
+          <div class="addendum-copy">
+            <h3>Integrated Operations and B2B Supply</h3>
+            <p>
+              Pervasive Capital's commodities division operates through contracted shipping
+              arrangements and dedicated storage infrastructure positioned at key logistics
+              nodes. This capacity allows the group to take principal positions, hold
+              inventory across market cycles, and deliver against forward commitments with
+              greater certainty of supply and timing.
+            </p>
+            <p>
+              For business-to-business counterparties, the platform provides ancillary
+              supply procurement to support strategic stockpiling programmes, whether for
+              sovereign food-security reserves, industrial feedstock buffers, or
+              contingency inventories held on behalf of institutional partners. Contracted
+              tonnage and pre-positioned warehouse capacity underpin these commitments.
+            </p>
+            <p>
+              Downstream partners can access value-added processing and refinement
+              options, including blending, grading, sorting, and repackaging to meet
+              specification requirements for onward sale or industrial use. This extends
+              the group's role beyond trading and storage into a coordinated facilitation
+              of physical commodity flows, from origin through transformation to end
+              market, reducing the number of intermediaries and improving traceability
+              across the chain.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </SiteLayout>
@@ -231,7 +270,8 @@ const tabs = [
   .solution-section {
     min-height: calc(100svh - var(--header-height) - 3.6rem);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding: clamp(4rem, 8vw, 7rem) 0;
     scroll-margin-top: calc(var(--header-height) + 3.5rem);
     border-bottom: 1px solid var(--line);
@@ -245,7 +285,7 @@ const tabs = [
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: clamp(2.5rem,  6vw, 6rem);
+    gap: clamp(2.5rem, 6vw, 6rem);
   }
 
   .solution-section.alternate .solution-copy {
@@ -321,6 +361,42 @@ const tabs = [
     text-align: right;
   }
 
+  /* ── Commodities addendum ── */
+
+  .commodities-addendum {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .addendum-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .addendum-figure {
+    margin: 0;
+  }
+
+  .addendum-figure :global(img) {
+    width: 100%;
+    display: block;
+    filter: drop-shadow(0 1.25rem 1.5rem rgb(7 29 43 / 8%));
+  }
+
+  .addendum-copy h3 {
+    margin-bottom: 1rem;
+    color: var(--navy);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+  }
+
+  .addendum-copy p {
+    color: var(--muted);
+  }
+
   @media (max-width: 900px) {
     .tabs-inner {
       width: max-content;
@@ -346,6 +422,10 @@ const tabs = [
     .solution-section.alternate .solution-copy,
     .solution-section.alternate .diagram {
       order: initial;
+    }
+
+    .addendum-inner {
+      grid-template-columns: 1fr;
     }
   }
 </style>
